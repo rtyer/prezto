@@ -11,3 +11,34 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+# Aliases
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias ls='ls -Gh'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias du='du -h'
+alias df='df -h'
+alias vi=vim
+
+export MY_AWS_KEY=$(cut -d = -f 2 -s ~/.aws/credentials | head -n1 | tr -d '[:space:]')
+export MY_AWS_SECRET=$(cut -d = -f 2 -s ~/.aws/credentials | head -n2 | tail -n1 | tr -d '[:space:]')
+export AWS_SECRET_ACCESS_KEY=$MY_AWS_SECRET
+export AWS_ACCESS_KEY_ID=$MY_AWS_KEY
+
+# Command Registration
+
+eval $(thefuck --alias)
+# Path
+
+export GOPATH="${HOME}/go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export JAVA_HOME=`/usr/libexec/java_home -v '1.8*'`
+export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF-8"
+
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+export PATH=/usr/local/bin:$PATH:/usr/local/sbin
